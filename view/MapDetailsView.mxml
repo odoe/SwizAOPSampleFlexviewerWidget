@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayList;
+			
+			import widgets.swizaopsamples.events.MapDetailsEvent;
+			
+			[Bindable]
+			[Inject( source="appModel.dataList", bind="true" )]
+			public var dataList:ArrayList;
+			
+			public function loadServices(url:String):void
+			{
+				trace( "I am building my event to load services" );
+				var event:MapDetailsEvent = new MapDetailsEvent( MapDetailsEvent.LOAD_SERVICES_REQUEST );
+				event.url = url;
+				dispatchEvent( event );
+			}
+			
+		]]>
+	</fx:Script>
+	<s:List width="100%" height="100%" dataProvider="{ dataList }" itemRenderer="widgets.swizaopsamples.view.itemRenderers.MapServiceItemRenderer" />
+</s:Group>
