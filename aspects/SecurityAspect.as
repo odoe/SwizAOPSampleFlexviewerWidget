@@ -15,7 +15,7 @@ package widgets.swizaopsamples.aspects
 		public function performAuthorization( invocation:IMethodInvocation, md:BaseMetadataTag ):*
 		{
 			var requiredRole:String = md.getArg( "requires" ).value;
-			var authorized:Boolean = requiredRole == "ADMIN";
+			var authorized:Boolean = requiredRole == "ADMIN"; // force a security warning for testing
 			
 			trace( "SecuritAspect running - current required role: ", requiredRole );
 			
